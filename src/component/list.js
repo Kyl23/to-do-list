@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 
 import Button from './button'
 
-function List({task,settask,toggle,delete_}) {
+function List({task,settask,type,toggle,delete_}) {
     return (
-        <div>
+        <>
             {task.map((task,index)=>(
-                <Button key={index} text={task} toggle={toggle} delete_={delete_}/>
+                <Button key={index} text={task} toggle={toggle} type={type} delete_={delete_}/>
             ))}
-        </div>
+        </>
     )
 }
 List.prototype={

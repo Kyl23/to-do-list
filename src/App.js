@@ -1,6 +1,5 @@
 import { useState } from "react";
-import Input from "./component/input";
-import Put_Button from "./component/put_to_do"
+import Header from "./component/header";
 import List from './component/list'
 function App() {
   const [txt, settxt] = useState("")
@@ -10,6 +9,7 @@ function App() {
     settxt(value)
   }
   const SetTask=(value)=>{
+    if(value.length<=0)return;
     let tp={
       id:n_id,
       value:value,
@@ -20,8 +20,9 @@ function App() {
   }
   const Toggle=(id)=>{
     task.map((t) =>
-      t.id === id ? t.reminder=!t.reminder:t.reminder=t.reminder
+      t.id === id ? t.reminder=!t.reminder:-1
     )
+    settask(task)
     console.log(task)
   }
   const Delete_=(id)=>{
@@ -29,9 +30,8 @@ function App() {
   }
   return (
     <div className="App">
-        <Input txt={txt} settxt={SetTxt}/>
-        <Put_Button txt={txt} settxt={SetTxt} settask={SetTask}/>
-        <List task={task} settask={settask} toggle={Toggle} delete_={Delete_}/>
+        <Header txt={txt} SetTxt={SetTxt} SetTask={SetTask}/>
+        <List task={task} settask={settask} toggle={Toggle} type={task.reminder} delete_={Delete_}/>
     </div>
   );
 }

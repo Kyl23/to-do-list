@@ -4,14 +4,14 @@ import PropTypes from 'prop-types'
 function Put_To_Do({txt,settxt,settask}) {
     
     return (
-        <div>
-            <input type="button" value="新增" onClick={
+        <>
+            <input className="btn" type="button" value="新增" onClick={
                 ()=>{
                     settask(txt)
                     settxt("")
                 }
             }/>
-        </div>
+        </>
     )
 }
 Put_To_Do.prototype={

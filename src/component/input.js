@@ -2,11 +2,11 @@ import PropTypes from 'prop-types'
 const Input = ({txt,settxt}) => {
    
     return (
-        <div>
-            <input type="text" placeholder="新增任務" value={txt} onChange={
+        <>
+            <input className="inpt" type="text" placeholder="新增任務" value={txt} onChange={
                 (e)=>settxt(e.target.value)
             }/>
-        </div>
+        </>
     )
 }
 Input.prototype={
