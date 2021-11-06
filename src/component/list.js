@@ -3,19 +3,19 @@ import PropTypes from 'prop-types'
 
 import Button from './button'
 
-function List({task,settask,type,toggle,delete_}) {
+function List({tasks,settasks,type,Toggle,Delete_}) {
     return (
         <>
-            {task.map((task,index)=>(
-                <Button key={index} text={task} toggle={toggle} type={type} delete_={delete_}/>
+            {tasks.map((task)=>(
+                <Button key={task.value} text={task} Toggle={Toggle} type={type} Delete_={Delete_}/>
             ))}
         </>
     )
 }
 List.prototype={
-    settask:PropTypes.func.isRequired,
-    task:PropTypes.array.isRequired,
-    toggle:PropTypes.func.isRequired,
-    delete_:PropTypes.func.isRequired,
+    settasks:PropTypes.func.isRequired,
+    tasks:PropTypes.array.isRequired,
+    Toggle:PropTypes.func.isRequired,
+    Delete_:PropTypes.func.isRequired,
 }
 export default List

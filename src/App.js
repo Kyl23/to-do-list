@@ -3,7 +3,7 @@ import Header from "./component/header";
 import List from './component/list'
 function App() {
   const [txt, settxt] = useState("")
-  const [task, settask] = useState([])
+  const [tasks, settasks] = useState([])
   const [n_id,setn_id]=useState(1)
   const SetTxt=(value)=>{
     settxt(value)
@@ -15,23 +15,23 @@ function App() {
       value:value,
       reminder:false,
     }
-    settask([...task,tp])
+    settasks([...tasks,tp])
     setn_id(n_id+1)
   }
   const Toggle=(id)=>{
-    task.map((t) =>
-      t.id === id ? t.reminder=!t.reminder:-1
+    tasks.map((task) =>
+      task.id === id ? task.reminder=!task.reminder:-1
     )
-    settask(task)
-    console.log(task)
+    settasks(tasks)
+    console.log(tasks)
   }
   const Delete_=(id)=>{
-      settask(task.filter((t)=>t.id!==id))
+      settasks(tasks.filter((task)=>task.id!==id))
   }
   return (
     <div className="App">
         <Header txt={txt} SetTxt={SetTxt} SetTask={SetTask}/>
-        <List task={task} settask={settask} toggle={Toggle} type={task.reminder} delete_={Delete_}/>
+        <List tasks={tasks} settasks={settasks} Toggle={Toggle} type={tasks.reminder} Delete_={Delete_}/>
     </div>
   );
 }
