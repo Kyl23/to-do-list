@@ -8,17 +8,17 @@ function List({tasks,type,toggle,delete_}) {
         <>
             {tasks.map((task)=>(
                 <Button 
-                    key={task.value} 
-                    task={task} 
-                    toggle={toggle} 
-                    type={type} 
-                    delete_={delete_}
+                    key = {task.value} 
+                    task = {task} 
+                    toggle = {toggle} 
+                    type = {type} 
+                    delete_ = {delete_}
                 />
             ))}
         </>
     )
 }
-List.prototype={
+List.prototype = {
     setTasks:PropTypes.func.isRequired,
     tasks:PropTypes.array.isRequired,
     toggle:PropTypes.func.isRequired,
