@@ -1,20 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-function Put_To_Do({txt,settxt,settask}) {
+function Put_To_Do({txt,setTxt,setTask}) {
     
     return (
         <input className="btn" type="button" value="新增" onClick={
             ()=>{
-                settask(txt)
-                settxt("")
+                setTask(txt)
+                setTxt("")
             }
         }/>
     )
 }
 Put_To_Do.prototype={
-    settasks:PropTypes.func.isRequired,
+    setTasks:PropTypes.func.isRequired,
     txt:PropTypes.string.isRequired,
-    settxt:PropTypes.func.isRequired
+    setTxt:PropTypes.func.isRequired
 }
 export default Put_To_Do
