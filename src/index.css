@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.non-event,event{
+  width:100%;
+  background-color: bisque;
+  font-size: medium;
+  font-family:KaiTi;
+}
