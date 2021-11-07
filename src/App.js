@@ -24,8 +24,6 @@ function App() {
 
   const Toggle=useCallback((id)=>{
     tasks.map((task) => task.id === id ? task.reminder = !task.reminder : "")
-    setTasks(tasks)
-    console.log(tasks)
   }, [tasks])
 
   const Delete_ = useCallback((id)=>{
