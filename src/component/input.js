@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types'
+import { TextInput } from './css_element'
+
 const Input = ({txt,setTxt}) => {
-   
     return (
-        <input className="inpt" type="text" placeholder="新增任務" value={txt} onChange={(e)=>setTxt(e.target.value)}/>
+        <TextInput type="text" placeholder="新增任務" value={txt} onChange={
+            (e)=>setTxt(e.target.value)
+        }/>
     )
 }
 Input.prototype={

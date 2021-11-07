@@ -1,10 +1,10 @@
 import Input from "./input";
 import PutButton from "./put_to_do"
 import React from 'react'
-
+import {HeadDiv} from './css_element'
 function Header({txt,setTxt,setTask}) {
     return (
-        <div className="header">
+        <HeadDiv>
             <Input 
                 txt={txt} 
                 setTxt={setTxt}
@@ -14,7 +14,7 @@ function Header({txt,setTxt,setTask}) {
                 setTxt={setTxt} 
                 setTask={setTask}
             />
-        </div>
+        </HeadDiv>
     )
 }
 

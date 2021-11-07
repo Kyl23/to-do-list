@@ -5,9 +5,10 @@ function App() {
   const [txt, setTxt] = useState("")
   const [tasks, setTasks] = useState([])
   const [n_id,setN_id]=useState(1)
-  const SetTxt = (value) => {
+
+  const SetTxt = useCallback((value) => {
     setTxt(value)
-  }
+  },[])
   
   const SetTask=useCallback((value)=>
   {
@@ -19,12 +20,12 @@ function App() {
       }
       setTasks([ ...tasks, tp])
       setN_id(n_id + 1)
-      console.log(tasks)
   },[ n_id, tasks])
 
   const Toggle=useCallback((id)=>{
-    tasks.map((task) => task.id === id ? task.reminder =! task.reminder : -1)
+    tasks.map((task) => task.id === id ? task.reminder = !task.reminder : task.reminder=task.reminder)
     setTasks(tasks)
+    console.log(tasks)
   }, [tasks])
 
   const Delete_ = useCallback((id)=>{

@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useCallback } from 'react'
+import { useCallBack,useState } from 'react'
 import PropTypes from 'prop-types'
+import style from 'styled-components'
+import {ButtonContainer , DeleteIcon ,DynamicRemindStatus} from './css_element'
 
-function Button_({task,toggle,delete_,type}) {
+function Button_({task,toggle,delete_}) {
+    const [change, setchange] = useState(0)
+    
+    const handle = (id)=>{
+        toggle(id)
+        setchange((change==0)? 1:0) //force update
+    }
     return (
-        <div className = "flex_p">
-            <div className = {(type)?"event":"non-event"} onClick = {() => toggle(task.id), (e) => {e.target.className=(e.target.className==="event")?"non-event":"event"}}>{task.value}</div>
-            <span onClick = {() => delete_(task.id)}> x </span>
-        </div>
+        <ButtonContainer>
+            <DynamicRemindStatus task={task} onClick={()=>handle(task.id)}>{task.value}</DynamicRemindStatus>
+            <DeleteIcon onClick = {() => delete_(task.id)}> x </DeleteIcon>
+        </ButtonContainer>
     )
 }
 Button_.prototype = {

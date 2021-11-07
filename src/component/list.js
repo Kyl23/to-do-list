@@ -8,7 +8,7 @@ function List({tasks,type,toggle,delete_}) {
         <>
             {tasks.map((task)=>(
                 <Button 
-                    key = {task.value} 
+                    key = {task.id} 
                     task = {task} 
                     toggle = {toggle} 
                     type = {type} 
