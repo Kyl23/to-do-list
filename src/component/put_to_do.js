@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {AddButton} from './css_element'
-function Put_To_Do({txt,setTxt,setTask}) {
+function Put_To_Do({txt,setTxt,setTask,addButtonRef}) {
     
     return (
-        <AddButton type = "button" value = "新增" onClick = {
+        <AddButton ref={addButtonRef} type = "button" value = "新增" onClick = {
             () => {
                 setTask(txt)
                 setTxt("")

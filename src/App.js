@@ -1,11 +1,11 @@
-import { useState ,useCallback } from "react";
+import { useState ,useCallback ,useRef} from "react";
 import Header from "./component/header";
 import List from './component/list'
 function App() {
   const [txt, setTxt] = useState("")
   const [tasks, setTasks] = useState([])
   const [n_id,setN_id]=useState(1)
-
+  const AddButtonRef = useRef(0)
   const SetTxt = useCallback((value) => {
     setTxt(value)
   },[])
@@ -23,7 +23,7 @@ function App() {
   },[ n_id, tasks])
 
   const Toggle=useCallback((id)=>{
-    tasks.map((task) => task.id === id ? task.reminder = !task.reminder : task.reminder=task.reminder)
+    tasks.map((task) => task.id === id ? task.reminder = !task.reminder : "")
     setTasks(tasks)
     console.log(tasks)
   }, [tasks])
@@ -38,6 +38,7 @@ function App() {
           txt = {txt}
           setTxt = {SetTxt}
           setTask = {SetTask}
+          addButtonRef={AddButtonRef}
         />
         <List 
           tasks = {tasks} 

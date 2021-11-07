@@ -1,7 +1,5 @@
-import React, { useCallback } from 'react'
-import { useCallBack,useState } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
-import style from 'styled-components'
 import {ButtonContainer , DeleteIcon ,DynamicRemindStatus} from './css_element'
 
 function Button_({task,toggle,delete_}) {
@@ -9,7 +7,7 @@ function Button_({task,toggle,delete_}) {
     
     const handle = (id)=>{
         toggle(id)
-        setchange((change==0)? 1:0) //force update
+        setchange((change === 0)? 1:0) //force update
     }
     return (
         <ButtonContainer>
