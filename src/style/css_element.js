@@ -7,14 +7,14 @@ export const AddButton = style.input`
     color: black;
     border-radius:50px;
     background-color: burlywood;
-    font-size:3vw;
+    font-size:20px;
 `;
 export const TextInput = style.input`
     border-radius: 50px;
     width: 70%;
-    margin-right: 1vw;
+    margin-right: 5px;
     padding-left: 20px;
-    font-size:3vw;
+    font-size:20px;
 `;
 
 export const HeadDiv = style.div`
@@ -25,41 +25,43 @@ export const HeadDiv = style.div`
 `;
 
 export const ButtonContainer = style.div`
-    display: flex;
     margin:auto;
     margin-bottom: 10px;
     width: 60%;
-    min-height: 8vw;
-    max-height: 8vw;
-    text-align: right;
-    padding:auto;
+    min-height: 80px;
+    max-height: 80px;
     background-color: bisque;
     &:hover{
         background-color:rgb(188, 161, 126);
     }
 `;
 
-export const DeleteIcon = style.span`
+export const DeleteIcon = style.div`
+    height:55px;
     color: red;
-    align-self: center;
-    font-size: 5vw;
     position: relative;
-    right: -2vw;
-    top:-0.5vw;
+    right:5px;
     cursor:pointer;
     &:hover{
         color:lightblue;
     };
 `;
+export const TextDiv = style.div`
+    height:55px;
+    width:80%;
+    text-align:left;
+`;
 
 export const DynamicRemindStatus = style.div`
-    width:80%;
-    font-size: 4vw;
+    width:100%;
+    height:80px;
+    display: flex;
+    align-items:center;
+
+    font-size: 40px;
     font-family: KaiTi;
-    text-align: left;
     padding-left: ${(props) => (props.task.reminder ? "5px" : "20px")};
     border-left: ${(props) => (props.task.reminder ? "15px" : "0")} ${(props) =>
-  props.task.reminder ? "solid" : "none"} green;
-    padding-top:1.5vw;
+  props.task.reminder ? "solid" : "none"} green;        
     cursor:pointer;
 `;

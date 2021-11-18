@@ -4,7 +4,7 @@ import {
   ButtonContainer,
   DeleteIcon,
   DynamicRemindStatus,
-} from "./css_element";
+} from "../../style/css_element";
 
 function Button_({ task, toggle, delete_ }) {
   const [change, setchange] = useState(0);
@@ -16,9 +16,9 @@ function Button_({ task, toggle, delete_ }) {
   return (
     <ButtonContainer>
       <DynamicRemindStatus task={task} onClick={() => handle(task.id)}>
-        {task.value}
+        <TextDiv>{task.value}</TextDiv>
+        <DeleteIcon onClick={() => delete_(task.id)}> x </DeleteIcon>
       </DynamicRemindStatus>
-      <DeleteIcon onClick={() => delete_(task.id)}> x </DeleteIcon>
     </ButtonContainer>
   );
 }
