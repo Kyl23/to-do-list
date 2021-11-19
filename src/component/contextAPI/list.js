@@ -1,9 +1,11 @@
-import { useContext, useCallback } from "react";
+import { useContext, useCallback, useEffect } from "react";
 import Button from "./button";
-import { homePgContent } from "../../context/homePgContext";
+import { homePgContext } from "../../context/homePgContext";
+import { AppPool } from "../../Pool/AppPool";
 
 function List() {
-  const value = useContext(homePgContent);
+  
+  const value = useContext(homePgContext);
 
   const [tasks, setTasks] = value.taskContext;
 
@@ -20,8 +22,18 @@ function List() {
     (id) => {
       setTasks(tasks.filter((task) => task.id !== id));
     },
-    [tasks,setTasks]
+    [tasks, setTasks]
   );
+  const valuePool = useContext(AppPool);
+  const [, setPool] = valuePool.PoolContext;
+  const [, setFunc] = valuePool.FuncContext;
+  useEffect(() => {
+    //below is setPool
+    setPool(tasks);
+    setFunc((setTarget = () => {}, data) => {
+      setTarget([data]);
+    });
+  }, [setPool, setFunc, tasks]);
 
   return (
     <>

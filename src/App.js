@@ -1,5 +1,6 @@
 import { Route, Routes, BrowserRouter, Link } from "react-router-dom";
 import Homepage from "./component/Homepage";
+import Reduxpage from "./component/Reduxpage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         </ul>
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/redux" element={<Reduxpage />} />
         </Routes>
       </div>
     </BrowserRouter>

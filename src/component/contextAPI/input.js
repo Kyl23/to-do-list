@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import PropTypes from "prop-types";
 import { TextInput } from "../../style/css_element";
-import { homePgContent } from "../../context/homePgContext";
+import { homePgContext } from "../../context/homePgContext";
 
 const Input = () => {
-  const value = useContext(homePgContent);
+  const value = useContext(homePgContext);
   const [txt, setTxt] = value.textContext;
   const addButtonRef = value.refContext;
   return (

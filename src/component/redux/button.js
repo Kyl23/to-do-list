@@ -4,6 +4,7 @@ import {
   ButtonContainer,
   DeleteIcon,
   DynamicRemindStatus,
+  TextDiv,
 } from "../../style/css_element";
 
 function Button_({ task, toggle, delete_ }) {

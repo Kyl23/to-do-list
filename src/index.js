@@ -3,10 +3,13 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { PoolData } from "./Pool/AppPool";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <PoolData>
+      <App />
+    </PoolData>
   </React.StrictMode>,
   document.getElementById("root")
 );
