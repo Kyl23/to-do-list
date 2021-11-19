@@ -1,11 +1,11 @@
 import { useContext, useCallback, useEffect } from "react";
 import Button from "./button";
-import { homePgContext } from "../../context/homePgContext";
+import { HomePgContext } from "../../context/HomePgContext";
 import { AppPool } from "../../Pool/AppPool";
 
 function List() {
   
-  const value = useContext(homePgContext);
+  const value = useContext(HomePgContext);
 
   const [tasks, setTasks] = value.taskContext;
 

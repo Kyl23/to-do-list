@@ -1,6 +1,6 @@
 import { createContext, useState, useRef } from "react";
 
-export const homePgContext = createContext();
+export const HomePgContext = createContext();
 
 export const DataProvider = (props) => {
   const [txt, setTxt] = useState("");
@@ -9,7 +9,7 @@ export const DataProvider = (props) => {
   const AddButtonRef = useRef(0);
 
   return (
-    <homePgContext.Provider
+    <HomePgContext.Provider
       value={{
         textContext: [txt, setTxt],
         taskContext: [tasks, setTasks],
@@ -18,6 +18,6 @@ export const DataProvider = (props) => {
       }}
     >
       {props.children}
-    </homePgContext.Provider>
+    </HomePgContext.Provider>
   );
 };

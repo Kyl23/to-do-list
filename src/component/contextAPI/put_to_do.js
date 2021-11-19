@@ -1,8 +1,8 @@
 import { useContext, useCallback } from "react";
 import { AddButton } from "../../style/css_element";
-import { homePgContext } from "../../context/homePgContext";
+import { HomePgContext } from "../../context/HomePgContext";
 function Put_To_Do() {
-  const value = useContext(homePgContext);
+  const value = useContext(HomePgContext);
   const [txt, setTxt] = value.textContext;
   const addButtonRef = value.refContext;
   const [n_id, setN_id] = value.idContext;

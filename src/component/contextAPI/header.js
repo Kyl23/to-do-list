@@ -3,10 +3,10 @@ import PutButton from "./put_to_do";
 import { useContext, useEffect } from "react";
 import { HeadDiv } from "../../style/css_element";
 import { AppPool } from "../../Pool/AppPool";
-import { homePgContext } from "../../context/homePgContext";
+import { HomePgContext } from "../../context/HomePgContext";
 function Header() {
   const poolValue = useContext(AppPool);
-  const homeValue = useContext(homePgContext);
+  const homeValue = useContext(HomePgContext);
   const [tasks, setTasks] = homeValue.taskContext;
   const [pool, funcPool] = poolValue.PoolContext;
   useEffect(() => {
