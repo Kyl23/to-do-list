@@ -21,4 +21,3 @@ export const DataProvider = (props) => {
     </HomePgContext.Provider>
   );
 };
-//
