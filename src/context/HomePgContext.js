@@ -5,7 +5,7 @@ export const HomePgContext = createContext();
 export const DataProvider = (props) => {
   const [txt, setTxt] = useState("");
   const [tasks, setTasks] = useState([]);
-  const [n_id, setN_id] = useState(1);
+  const [n_id, setN_id] = useState(0);
   const AddButtonRef = useRef(0);
 
   return (
