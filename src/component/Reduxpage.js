@@ -42,6 +42,7 @@ function Homepage() {
 
   return (
     <>
+      Redux
       <Header
         txt={txt}
         setTxt={SetTxt}
