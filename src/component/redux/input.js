@@ -1,19 +1,30 @@
-import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
 import { TextInput } from "../../style/css_element";
 
-const Input = ({ txt, setTxt, addButtonRef }) => {
+const Input = () => {
+  const input = useSelector((state) => state.input);
+  const id = useSelector((state) => state.id);
+  const dispatch = useDispatch();
+  const setTask = () => {
+    dispatch({
+      type: "NewTask",
+      new: {
+        id: id,
+        value: input,
+        reminder: false,
+      },
+    });
+    dispatch({ type: "Add" });
+    dispatch({ type: "ClearAll" });
+  };
   return (
     <TextInput
       type="text"
       placeholder="新增任務"
-      value={txt}
-      onChange={(e) => setTxt(e.target.value)}
-      onKeyDown={(e) => (e.key === "Enter" ? addButtonRef.current.click() : "")}
+      value={input}
+      onChange={(e) => dispatch({ type: "SetText", text: e.target.value })}
+      onKeyDown={(e) => (e.key === "Enter" ? setTask() : "")}
     />
   );
-};
-Input.prototype = {
-  txt: PropTypes.string.isRequired,
-  setTxt: PropTypes.func.isRequired,
 };
 export default Input;

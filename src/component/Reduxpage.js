@@ -1,60 +1,29 @@
-import { useState, useCallback, useRef } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Header from "./redux/header";
 import List from "./redux/list";
+
 function Homepage() {
-  const [txt, setTxt] = useState("");
-  const [tasks, setTasks] = useState([]);
-  const [n_id, setN_id] = useState(1);
-  const AddButtonRef = useRef(0);
-  const SetTxt = useCallback((value) => {
-    setTxt(value);
-  }, []);
-
-  const SetTask = useCallback(
-    (value) => {
-      if (value.length <= 0) return;
-      let tp = {
-        id: n_id,
-        value: value,
-        reminder: false,
-      };
-      setTasks([...tasks, tp]);
-      setN_id(n_id + 1);
-    },
-    [n_id, tasks]
-  );
-
-  const Toggle = useCallback(
-    (id) => {
-      tasks.map((task) =>
-        task.id === id ? (task.reminder = !task.reminder) : ""
-      );
-    },
-    [tasks]
-  );
-
-  const Delete_ = useCallback(
-    (id) => {
-      setTasks(tasks.filter((task) => task.id !== id));
-    },
-    [tasks]
-  );
-
+  const id = useSelector((state) => state.id);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (id === 0) {
+      fetch(
+        "https://raw.githubusercontent.com/JiaAnTW/json_storage/master/react-tutorial/todolist.json",
+        { method: "GET" }
+      )
+        .then((res) => res.json())
+        .then((result) => {
+          console.log(result.data.length);
+          dispatch({ type: "Value", value: result.data.length + 1 });
+          dispatch({ type: "InitTask", allTask: result.data });
+        });
+    }
+  }, [id, dispatch]);
   return (
     <>
-      Redux
-      <Header
-        txt={txt}
-        setTxt={SetTxt}
-        setTask={SetTask}
-        addButtonRef={AddButtonRef}
-      />
-      <List
-        tasks={tasks}
-        type={tasks.reminder}
-        toggle={Toggle}
-        delete_={Delete_}
-      />
+      <Header />
+      <List />
     </>
   );
 }

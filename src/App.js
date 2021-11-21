@@ -6,8 +6,8 @@ import { AppPool } from "./Pool/AppPool";
 
 function App() {
   const poolValue = useContext(AppPool);
-  const [, setLegal]=poolValue.ActiveContext;
-  const SetLegal =()=>setLegal(false)
+  const [, setLegal] = poolValue.ActiveContext;
+  const SetLegal = () => setLegal(false);
   return (
     <BrowserRouter>
       <div className="App">

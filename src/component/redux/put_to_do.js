@@ -1,15 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { AddButton } from "../../style/css_element";
-function Put_To_Do({ txt, setTxt, setTask, addButtonRef }) {
+import { useDispatch, useSelector } from "react-redux";
+function Put_To_Do() {
+  const text = useSelector((state) => state.input);
+  const id = useSelector((state) => state.id);
+  const dispatch = useDispatch();
   return (
     <AddButton
-      ref={addButtonRef}
       type="button"
       value="新增"
       onClick={() => {
-        setTask(txt);
-        setTxt("");
+        dispatch({
+          type: "NewTask",
+          new: {
+            id: id,
+            value: text,
+            reminder: false,
+          },
+        });
+        dispatch({ type: "Add" });
+        dispatch({ type: "ClearAll" });
       }}
     />
   );

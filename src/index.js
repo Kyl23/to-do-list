@@ -4,12 +4,19 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { PoolData } from "./Pool/AppPool";
+import { Provider } from "react-redux";
+import allReducers from "../src/store";
+import { createStore } from "redux";
+
+const Store = createStore(allReducers);
 
 ReactDOM.render(
   <React.StrictMode>
-    <PoolData>
-      <App />
-    </PoolData>
+    <Provider store={Store}>
+      <PoolData>
+        <App />
+      </PoolData>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

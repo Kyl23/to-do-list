@@ -4,7 +4,6 @@ import { HomePgContext } from "../../context/HomePgContext";
 import { AppPool } from "../../Pool/AppPool";
 
 function List() {
-  
   const value = useContext(HomePgContext);
 
   const [tasks, setTasks] = value.taskContext;

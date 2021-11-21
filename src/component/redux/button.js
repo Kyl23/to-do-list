@@ -1,4 +1,3 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
 import {
   ButtonContainer,
@@ -6,19 +5,23 @@ import {
   DynamicRemindStatus,
   TextDiv,
 } from "../../style/css_element";
+import { useDispatch } from "react-redux";
 
-function Button_({ task, toggle, delete_ }) {
-  const [change, setchange] = useState(0);
+function Button_({ task }) {
+  const dispatch = useDispatch();
 
-  const handle = (id) => {
-    toggle(id);
-    setchange(change === 0 ? 1 : 0); //force update
-  };
   return (
     <ButtonContainer>
-      <DynamicRemindStatus task={task} onClick={() => handle(task.id)}>
+      <DynamicRemindStatus
+        task={task}
+        onClick={() => dispatch({ type: "SwitchStatus", id: task.id })}
+      >
         <TextDiv>{task.value}</TextDiv>
-        <DeleteIcon onClick={() => delete_(task.id)}> x </DeleteIcon>
+        <DeleteIcon
+          onClick={() => dispatch({ type: "DeleteTask", id: task.id })}
+        >
+          x
+        </DeleteIcon>
       </DynamicRemindStatus>
     </ButtonContainer>
   );

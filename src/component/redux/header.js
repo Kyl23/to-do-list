@@ -2,16 +2,11 @@ import Input from "./input";
 import PutButton from "./put_to_do";
 import React from "react";
 import { HeadDiv } from "../../style/css_element";
-function Header({ txt, setTxt, setTask, addButtonRef }) {
+function Header() {
   return (
     <HeadDiv>
-      <Input txt={txt} setTxt={setTxt} addButtonRef={addButtonRef} />
-      <PutButton
-        txt={txt}
-        setTxt={setTxt}
-        setTask={setTask}
-        addButtonRef={addButtonRef}
-      />
+      <Input />
+      <PutButton />
     </HeadDiv>
   );
 }
