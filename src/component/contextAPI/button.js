@@ -7,7 +7,7 @@ import {
   TextDiv,
 } from "../../style/css_element";
 
-function Button_({ task, setTask, toggle, delete_ }) {
+function Button_({ task, toggle, delete_ }) {
   const [change, setchange] = useState(0);
 
   const handle = (id) => {

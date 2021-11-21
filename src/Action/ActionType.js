@@ -1,0 +1,8 @@
+export const ActionType = {
+    SET_TASK:"SET_TASK",
+    CLEAR_ALL:"CLEAR_ALL",
+    INIT_TASK:"INIT_TASK",
+    NEW_TASK:"NEW_TASK",
+    DELETE_TASK:"DELETE_TASK",
+    SWITCH_TASK:"SWITCH_TASK",
+}

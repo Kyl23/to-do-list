@@ -1,13 +1,11 @@
-import { useContext, useCallback, useEffect } from "react";
+import { useContext, useCallback } from "react";
 import Button from "./button";
 import { HomePgContext } from "../../context/HomePgContext";
-import { AppPool } from "../../Pool/AppPool";
 
 function List() {
   const value = useContext(HomePgContext);
-
   const [tasks, setTasks] = value.taskContext;
-
+  
   const Toggle = useCallback(
     (id) => {
       tasks.map((task) =>
@@ -23,27 +21,11 @@ function List() {
     },
     [tasks, setTasks]
   );
-  const valuePool = useContext(AppPool);
-  const [, setPool] = valuePool.PoolContext;
-  const [, setFunc] = valuePool.FuncContext;
-  useEffect(() => {
-    //below is setPool
-    setPool(tasks);
-    setFunc((setTarget = () => {}, data) => {
-      setTarget([data]);
-    });
-  }, [setPool, setFunc, tasks]);
 
   return (
     <>
       {tasks.map((task) => (
-        <Button
-          key={task.id}
-          setTask={setTasks}
-          task={task}
-          toggle={Toggle}
-          delete_={Delete_}
-        />
+        <Button key={task.id} task={task} toggle={Toggle} delete_={Delete_} />
       ))}
     </>
   );

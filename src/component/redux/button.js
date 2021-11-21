@@ -6,7 +6,7 @@ import {
 } from "../../style/css_element";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-
+import { ActionType } from "../../Action/ActionType";
 function Button_({ task }) {
   const dispatch = useDispatch();
   const [change, setchange] = useState(0);
@@ -19,7 +19,7 @@ function Button_({ task }) {
     <ButtonContainer>
       <DynamicRemindStatus
         task={task}
-        onDoubleClick={() => dispatch({ type: "SwitchStatus", id: task.id })}
+        onDoubleClick={() => dispatch({ type: ActionType.SWITCH_TASK, id: task.id })}
       >
         <TextDiv
           onChange={(e) => changeTask(e.target.value)}
@@ -27,7 +27,7 @@ function Button_({ task }) {
           placeholder="Empty Task"
         />
         <DeleteIcon
-          onClick={() => dispatch({ type: "DeleteTask", id: task.id })}
+          onClick={() => dispatch({ type: ActionType.DELETE_TASK, id: task.id })}
         >
           x
         </DeleteIcon>

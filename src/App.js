@@ -1,19 +1,13 @@
-import { useContext } from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Homepage from "./component/Homepage";
 import NavigateBar from "./component/navigateBar";
 import Reduxpage from "./component/Reduxpage";
 
-import { AppPool } from "./Pool/AppPool";
-
 function App() {
-  const poolValue = useContext(AppPool);
-  const [, setLegal] = poolValue.ActiveContext;
-  const SetLegal = () => setLegal(false);
   return (
     <BrowserRouter>
       <div className="App">
-        <NavigateBar setLegal={SetLegal} />
+        <NavigateBar/>
         <Routes>
           <Route path="/to-do-list/" element={<Homepage />} />
           <Route path="/to-do-list/redux" element={<Reduxpage />} />

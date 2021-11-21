@@ -3,19 +3,18 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { PoolData } from "./Pool/AppPool";
 import { Provider } from "react-redux";
 import allReducers from "../src/store";
 import { createStore } from "redux";
-
+import { DataProvider } from "./context/HomePgContext";
 const Store = createStore(allReducers);
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={Store}>
-      <PoolData>
+      <DataProvider>
         <App />
-      </PoolData>
+      </DataProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

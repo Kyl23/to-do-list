@@ -1,10 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { AddButton } from "../../style/css_element";
 import { useDispatch, useSelector } from "react-redux";
-function Put_To_Do() {
-  const text = useSelector((state) => state.input);
-  const id = useSelector((state) => state.id);
+import { ActionType } from "../../Action/ActionType";
+function Put_To_Do({ text, setText }) {
+  const id = useSelector((state) => state.tasks.id);
   const dispatch = useDispatch();
   return (
     <AddButton
@@ -12,22 +11,16 @@ function Put_To_Do() {
       value="新增"
       onClick={() => {
         dispatch({
-          type: "NewTask",
+          type: ActionType.NEW_TASK,
           new: {
             id: id,
             value: text,
             reminder: false,
           },
         });
-        dispatch({ type: "Add" });
-        dispatch({ type: "ClearAll" });
+        setText("");
       }}
     />
   );
 }
-Put_To_Do.prototype = {
-  setTasks: PropTypes.func.isRequired,
-  txt: PropTypes.string.isRequired,
-  setTxt: PropTypes.func.isRequired,
-};
 export default Put_To_Do;
