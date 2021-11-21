@@ -5,10 +5,8 @@ import { DataProvider } from "../context/HomePgContext";
 function Homepage() {
   return (
     <DataProvider>
-      <>
         <Header />
         <List />
-      </>
     </DataProvider>
   );
 }
