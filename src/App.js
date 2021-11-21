@@ -21,8 +21,8 @@ function App() {
           </li>
         </ul>
         <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/redux" element={<Reduxpage />} />
+          <Route path="/to-do-list/" element={<Homepage />} />
+          <Route path="/to-do-list/redux" element={<Reduxpage />} />
         </Routes>
       </div>
     </BrowserRouter>
