@@ -14,10 +14,10 @@ function App() {
         <ul>
           <li>
             {" "}
-            <Link to="/">ContextAPI</Link>
+            <Link to="/to-do-list">ContextAPI</Link>
           </li>
           <li onClick={SetLegal}>
-            <Link to="redux">Redux</Link>
+            <Link to="/to-do-list/redux">Redux</Link>
           </li>
         </ul>
         <Routes>
