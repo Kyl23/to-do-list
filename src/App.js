@@ -1,7 +1,9 @@
 import { useContext } from "react";
-import { Route, Routes, BrowserRouter, Link } from "react-router-dom";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Homepage from "./component/Homepage";
+import NavigateBar from "./component/navigateBar";
 import Reduxpage from "./component/Reduxpage";
+
 import { AppPool } from "./Pool/AppPool";
 
 function App() {
@@ -11,15 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <ul>
-          <li>
-            {" "}
-            <Link to="/to-do-list">ContextAPI</Link>
-          </li>
-          <li onClick={SetLegal}>
-            <Link to="/to-do-list/redux">Redux</Link>
-          </li>
-        </ul>
+        <NavigateBar setLegal={SetLegal} />
         <Routes>
           <Route path="/to-do-list/" element={<Homepage />} />
           <Route path="/to-do-list/redux" element={<Reduxpage />} />

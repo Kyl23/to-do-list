@@ -1,5 +1,5 @@
 import style from "styled-components";
-
+import { Link } from "react-router-dom";
 export const AddButton = style.input`
     width:45px;
     outline: none;
@@ -69,4 +69,21 @@ export const DynamicRemindStatus = style.div`
     border-left: ${(props) => (props.task.reminder ? "4px" : "0")} ${(props) =>
   props.task.reminder ? "solid" : "none"} green;        
     cursor:pointer;
+`;
+export const Nav = style.ul`
+    width:100vw;
+    position:absolute;
+    top:0;left:0;
+    margin:0;
+    background-color:lightblue;
+    font-size:inherit;
+    text-align:left;
+`;
+export const NavOption = style.li`
+    display:inline-block;
+    margin:0 20px 0 20px;
+    text-decoration:none;
+`;
+export const LinkCSS = style(Link)`
+    text-decoration:none;
 `;
