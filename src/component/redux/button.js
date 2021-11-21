@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import {
   ButtonContainer,
   DeleteIcon,
@@ -6,17 +5,27 @@ import {
   TextDiv,
 } from "../../style/css_element";
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 
 function Button_({ task }) {
   const dispatch = useDispatch();
+  const [change, setchange] = useState(0);
+  const changeTask = (newTask) => {
+    task.value = newTask;
+    setchange(!change); //force update
+  };
 
   return (
     <ButtonContainer>
       <DynamicRemindStatus
         task={task}
-        onClick={() => dispatch({ type: "SwitchStatus", id: task.id })}
+        onDoubleClick={() => dispatch({ type: "SwitchStatus", id: task.id })}
       >
-        <TextDiv>{task.value}</TextDiv>
+        <TextDiv
+          onChange={(e) => changeTask(e.target.value)}
+          value={task.value}
+          placeholder="Empty Task"
+        />
         <DeleteIcon
           onClick={() => dispatch({ type: "DeleteTask", id: task.id })}
         >
@@ -26,8 +35,4 @@ function Button_({ task }) {
     </ButtonContainer>
   );
 }
-Button_.prototype = {
-  tasks: PropTypes.array.isRequired,
-  type: PropTypes.bool.isRequired,
-};
 export default Button_;

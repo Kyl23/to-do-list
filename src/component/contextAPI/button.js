@@ -7,17 +7,25 @@ import {
   TextDiv,
 } from "../../style/css_element";
 
-function Button_({ task, toggle, delete_ }) {
+function Button_({ task, setTask, toggle, delete_ }) {
   const [change, setchange] = useState(0);
 
   const handle = (id) => {
     toggle(id);
-    setchange(change === 0 ? 1 : 0); //force update
+    setchange(!change); //force update
+  };
+  const changeTask = (newTask) => {
+    task.value = newTask;
+    setchange(!change); //force update
   };
   return (
     <ButtonContainer>
-      <DynamicRemindStatus task={task} onClick={() => handle(task.id)}>
-        <TextDiv>{task.value}</TextDiv>
+      <DynamicRemindStatus task={task} onDoubleClick={() => handle(task.id)}>
+        <TextDiv
+          onChange={(e) => changeTask(e.target.value)}
+          value={task.value}
+          placeholder="Empty Task"
+        />
         <DeleteIcon onClick={() => delete_(task.id)}> x </DeleteIcon>
       </DynamicRemindStatus>
     </ButtonContainer>

@@ -37,7 +37,13 @@ function List() {
   return (
     <>
       {tasks.map((task) => (
-        <Button key={task.id} task={task} toggle={Toggle} delete_={Delete_} />
+        <Button
+          key={task.id}
+          setTask={setTasks}
+          task={task}
+          toggle={Toggle}
+          delete_={Delete_}
+        />
       ))}
     </>
   );
