@@ -18,7 +18,7 @@ const getTasksFromServer = async () => {
 function Header() {
   const homeValue = useContext(HomePgContext);
   const [, setTasks] = homeValue.taskContext;
-  const [n_id, setN_id] = homeValue.idContext;
+  const n_id = homeValue.taskContext[0].id;
 
   const [originTasks, setoriginTasks] = useState([]);
   const SetOriginTasks = useCallback((tasks) => {
@@ -34,15 +34,16 @@ function Header() {
     fetching();
   }, [SetOriginTasks]);
   useEffect(() => {
-    if (n_id === 0 && originTasks.length!==0) {
-      setTasks(originTasks);
-      setN_id(originTasks.length + 1);
+    if (n_id === 0 && originTasks.length !== 0) {
+      setTasks({ tasks: originTasks, id: originTasks.length + 1 });
     }
-  }, [originTasks, n_id, setTasks,setN_id]);
+  }, [originTasks, n_id, setTasks]);
+
+  const [input, setInput] = useState("");
   return (
     <HeadDiv>
-      <Input />
-      <PutButton />
+      <Input txt={input} setTxt={setInput} />
+      <PutButton txt={input} setTxt={setInput} />
     </HeadDiv>
   );
 }

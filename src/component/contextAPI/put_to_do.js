@@ -1,12 +1,10 @@
 import { useContext, useCallback } from "react";
 import { AddButton } from "../../style/css_element";
 import { HomePgContext } from "../../context/HomePgContext";
-function Put_To_Do() {
+function Put_To_Do({ txt, setTxt }) {
   const value = useContext(HomePgContext);
-  const [txt, setTxt] = value.textContext;
-  const addButtonRef = value.refContext;
-  const [n_id, setN_id] = value.idContext;
   const [tasks, setTasks] = value.taskContext;
+  const n_id = tasks.id;
 
   const SetTask = useCallback(
     (value) => {
@@ -16,20 +14,18 @@ function Put_To_Do() {
         value: value,
         reminder: false,
       };
-      setTasks([...tasks, tp]);
-      setN_id(n_id + 1);
+      setTasks({ tasks: [...tasks.tasks, tp], id: n_id + 1 });
+      setTxt("");
     },
-    [n_id, tasks, setTasks, setN_id]
+    [n_id, tasks, setTasks, setTxt]
   );
 
   return (
     <AddButton
-      ref={addButtonRef}
       type="button"
       value="新增"
       onClick={() => {
         SetTask(txt);
-        setTxt("");
       }}
     />
   );

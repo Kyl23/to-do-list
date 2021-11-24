@@ -19,16 +19,14 @@ function Button_({ task }) {
     <ButtonContainer>
       <DynamicRemindStatus
         task={task}
-        onDoubleClick={() => dispatch({ type: ActionType.SWITCH_TASK, id: task.id })}
+        onDoubleClick={() => dispatch(ActionType.SWITCH_TASK(task.id))}
       >
         <TextDiv
           onChange={(e) => changeTask(e.target.value)}
           value={task.value}
           placeholder="Empty Task"
         />
-        <DeleteIcon
-          onClick={() => dispatch({ type: ActionType.DELETE_TASK, id: task.id })}
-        >
+        <DeleteIcon onClick={() => dispatch(ActionType.DELETE_TASK(task.id))}>
           x
         </DeleteIcon>
       </DynamicRemindStatus>

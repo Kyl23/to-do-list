@@ -15,7 +15,7 @@ function Homepage() {
         )
           .then((res) => res.json())
           .then((result) => {
-            dispatch({ type: ActionType.INIT_TASK, allTask: result.data });
+            dispatch(ActionType.INIT_TASK(result.data));
           });
       }
     };

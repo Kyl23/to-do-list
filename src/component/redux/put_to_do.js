@@ -10,14 +10,7 @@ function Put_To_Do({ text, setText }) {
       type="button"
       value="新增"
       onClick={() => {
-        dispatch({
-          type: ActionType.NEW_TASK,
-          new: {
-            id: id,
-            value: text,
-            reminder: false,
-          },
-        });
+        dispatch(ActionType.NEW_TASK(id, text));
         setText("");
       }}
     />
