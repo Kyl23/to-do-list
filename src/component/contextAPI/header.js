@@ -5,15 +5,13 @@ import { HeadDiv } from "../../style/css_element";
 import { HomePgContext } from "../../context/HomePgContext";
 import { action } from "../../Action/actionType";
 
-const getTasksFromServer = async () => {
-  const response = await fetch(
+const getTasksFromServer = (callbackFunc) => {
+  fetch(
     "https://raw.githubusercontent.com/JiaAnTW/json_storage/master/react-tutorial/todolist.json",
     { method: "GET" }
-  );
-  const data = await response.text();
-  const result = await JSON.parse(data).data;
-
-  return result;
+  )
+    .then((res) => res.json())
+    .then((result) => callbackFunc(result.data));
 };
 
 function Header() {
@@ -28,11 +26,7 @@ function Header() {
 
   useEffect(() => {
     //fetch one time only
-    const fetching = async () => {
-      const data = await getTasksFromServer();
-      SetOriginTasks(data);
-    };
-    fetching();
+    getTasksFromServer(SetOriginTasks);
   }, [SetOriginTasks]);
   useEffect(() => {
     if (n_id === 0 && originTasks.length !== 0) {
