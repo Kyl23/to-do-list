@@ -1,7 +1,7 @@
 import React from "react";
-import { Nav, NavOption,LinkCSS } from "../style/css_element";
+import { Nav, NavOption, LinkCSS } from "../style/css_element";
 // import { Link } from "react-router-dom";
-function navigateBar({setLegal}) {
+function navigateBar({ setLegal }) {
   return (
     <Nav>
       <NavOption>

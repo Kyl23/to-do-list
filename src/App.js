@@ -7,7 +7,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <NavigateBar/>
+        <NavigateBar />
         <Routes>
           <Route path="/to-do-list/" element={<Homepage />} />
           <Route path="/to-do-list/redux" element={<Reduxpage />} />

@@ -14,7 +14,7 @@ const getFromServer = () => {
         return res.json();
       })
       .then((result) => {
-        dispatch (ActionType.INIT_TASK(result.data));
+        dispatch(ActionType.INIT_TASK(result.data));
       });
   };
 };
