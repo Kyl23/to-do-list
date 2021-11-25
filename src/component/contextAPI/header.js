@@ -3,6 +3,7 @@ import PutButton from "./put_to_do";
 import { useState, useContext, useEffect, useCallback } from "react";
 import { HeadDiv } from "../../style/css_element";
 import { HomePgContext } from "../../context/HomePgContext";
+import { action } from "../../Action/actionType";
 
 const getTasksFromServer = async () => {
   const response = await fetch(
@@ -16,9 +17,9 @@ const getTasksFromServer = async () => {
 };
 
 function Header() {
-  const homeValue = useContext(HomePgContext);
-  const [, setTasks] = homeValue.taskContext;
-  const n_id = homeValue.taskContext[0].id;
+  const [homeValue, dispatch] = useContext(HomePgContext);
+
+  const n_id = homeValue.id;
 
   const [originTasks, setoriginTasks] = useState([]);
   const SetOriginTasks = useCallback((tasks) => {
@@ -35,9 +36,9 @@ function Header() {
   }, [SetOriginTasks]);
   useEffect(() => {
     if (n_id === 0 && originTasks.length !== 0) {
-      setTasks({ tasks: originTasks, id: originTasks.length + 1 });
+      dispatch(action.INIT_TASK(originTasks));
     }
-  }, [originTasks, n_id, setTasks]);
+  }, [originTasks, n_id, dispatch]);
 
   const [input, setInput] = useState("");
   return (

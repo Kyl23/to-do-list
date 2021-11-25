@@ -1,6 +1,6 @@
 const NEW_TASK = (id, text) => {
   return {
-    type: "NEW_TASK",
+    type: actionType.NEW_TASK,
     new: {
       id: id,
       value: text,
@@ -10,19 +10,26 @@ const NEW_TASK = (id, text) => {
 };
 const INIT_TASK = (data) => {
   return {
-    type: "INIT_TASK",
+    type: actionType.INIT_TASK,
     allTask: data,
   };
 };
 const DELETE_TASK = (id) => {
-  return { type: "DELETE_TASK", id: id };
+  return { type: actionType.DELETE_TASK, id: id };
 };
 const SWITCH_TASK = (id) => {
-  return { type: "SWITCH_TASK", id: id };
+  return { type: actionType.SWITCH_TASK, id: id };
 };
-export const ActionType = {
+export const action = {
   INIT_TASK: INIT_TASK,
   NEW_TASK: NEW_TASK,
   DELETE_TASK: DELETE_TASK,
   SWITCH_TASK: SWITCH_TASK,
+};
+
+export const actionType = {
+  INIT_TASK: "INIT_TASK",
+  NEW_TASK: "NEW_TASK",
+  DELETE_TASK: "DELETE_TASK",
+  SWITCH_TASK: "SWITCH_TASK",
 };

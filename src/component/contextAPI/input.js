@@ -2,23 +2,17 @@ import { useContext, useCallback } from "react";
 import PropTypes from "prop-types";
 import { TextInput } from "../../style/css_element";
 import { HomePgContext } from "../../context/HomePgContext";
+import { action } from "../../Action/actionType";
 
 const Input = ({ txt, setTxt }) => {
-  const value = useContext(HomePgContext);
-  const [tasks, setTasks] = value.taskContext;
-  const n_id = tasks.id;
+  const [tasks, dispatch] = useContext(HomePgContext);
   const SetTask = useCallback(
     (value) => {
       if (value.length <= 0) return;
-      let tp = {
-        id: n_id,
-        value: value,
-        reminder: false,
-      };
-      setTasks({ tasks: [...tasks.tasks, tp], id: n_id + 1 });
+      dispatch(action.NEW_TASK(tasks.id,value));
       setTxt("");
     },
-    [n_id, tasks, setTasks, setTxt]
+    [tasks,dispatch, setTxt]
   );
   return (
     <TextInput

@@ -1,30 +1,25 @@
 import { useContext, useCallback } from "react";
 import Button from "./button";
 import { HomePgContext } from "../../context/HomePgContext";
+import { action } from "../../Action/actionType";
 
 function List() {
-  const value = useContext(HomePgContext);
-  const [tasks, setTasks] = value.taskContext;
+  const [tasks, dispatch] = useContext(HomePgContext);
 
   const Toggle = useCallback(
     (id) => {
-      tasks.tasks.map((task) =>
-        task.id === id ? (task.reminder = !task.reminder) : ""
-      );
+      dispatch(action.SWITCH_TASK(id))
     },
-    [tasks]
+    [dispatch]
   );
 
   const Delete_ = useCallback(
     (id) => {
-      setTasks({
-        tasks: tasks.tasks.filter((task) => task.id !== id),
-        id: tasks.id,
-      });
+      dispatch(action.DELETE_TASK(id));
     },
-    [tasks, setTasks]
+    [dispatch]
   );
-
+  
   return (
     <>
       {tasks.tasks.map((task) => (

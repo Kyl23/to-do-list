@@ -9,11 +9,11 @@ import { createStore, applyMiddleware } from "redux";
 import { DataProvider } from "./context/HomePgContext";
 import thunk from "redux-thunk";
 
-const Store = createStore(allReducers, applyMiddleware(thunk));
+const store = createStore(allReducers, applyMiddleware(thunk));
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={Store}>
+    <Provider store={store}>
       <DataProvider>
         <App />
       </DataProvider>

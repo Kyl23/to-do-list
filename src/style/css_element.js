@@ -32,14 +32,11 @@ export const ButtonContainer = style.div`
     width: 199px;
     min-height: 40px;
     max-height: 40px;
-    background-color: bisque;
-    &:hover{
-        background-color:rgb(188, 161, 126);
-    }
+    background-color: #FFFFFF;
 `;
 
 export const DeleteIcon = style.div`
-    color: red;
+    color: #D81B60;
     position: relative;
     right:5px;
     cursor:pointer;
@@ -65,8 +62,8 @@ export const DynamicRemindStatus = style.div`
 
     font-size: inherit;
     font-family: KaiTi;
-    padding-left: ${(props) => (props.task.reminder ? "5px" : "9px")};
-    border-left: ${(props) => (props.task.reminder ? "4px" : "0")} ${(props) =>
+    padding-left: ${(props) => (props.task.reminder ? "5px" : "10px")};
+    border-left: ${(props) => (props.task.reminder ? "5px" : "0")} ${(props) =>
   props.task.reminder ? "solid" : "none"} green;        
     cursor:pointer;
 `;

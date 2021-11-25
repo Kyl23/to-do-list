@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { ActionType } from "../../Action/ActionType";
+import { action } from "../../Action/actionType";
 import { TextInput } from "../../style/css_element";
 
 const Input = ({ text, setText }) => {
@@ -7,7 +7,7 @@ const Input = ({ text, setText }) => {
   const dispatch = useDispatch();
   const setTask = () => {
     setText("");
-    dispatch(ActionType.NEW_TASK(id, text));
+    dispatch(action.NEW_TASK(id, text));
   };
   return (
     <TextInput

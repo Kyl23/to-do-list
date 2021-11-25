@@ -1,23 +1,17 @@
 import { useContext, useCallback } from "react";
+import PropsTypes from "prop-types"
 import { AddButton } from "../../style/css_element";
 import { HomePgContext } from "../../context/HomePgContext";
+import { action } from "../../Action/actionType";
 function Put_To_Do({ txt, setTxt }) {
-  const value = useContext(HomePgContext);
-  const [tasks, setTasks] = value.taskContext;
-  const n_id = tasks.id;
+  const [,dispatch] = useContext(HomePgContext);
 
   const SetTask = useCallback(
     (value) => {
-      if (value.length <= 0) return;
-      let tp = {
-        id: n_id,
-        value: value,
-        reminder: false,
-      };
-      setTasks({ tasks: [...tasks.tasks, tp], id: n_id + 1 });
+      dispatch(action.NEW_TASK(value));
       setTxt("");
     },
-    [n_id, tasks, setTasks, setTxt]
+    [dispatch, setTxt]
   );
 
   return (
@@ -30,5 +24,8 @@ function Put_To_Do({ txt, setTxt }) {
     />
   );
 }
-
+Put_To_Do.prototype = {
+  text: PropsTypes.string.isRequired,
+  setText: PropsTypes.func.isRequired,
+};
 export default Put_To_Do;
