@@ -8,7 +8,7 @@ function List() {
 
   const Toggle = useCallback(
     (id) => {
-      dispatch(action.SWITCH_TASK(id))
+      dispatch(action.SWITCH_TASK(id));
     },
     [dispatch]
   );
@@ -19,7 +19,7 @@ function List() {
     },
     [dispatch]
   );
-  
+
   return (
     <>
       {tasks.tasks.map((task) => (
